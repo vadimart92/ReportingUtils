@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="ReportMappingConstructor.EntityDefinitions.EntityDefinitionsControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ReportMappingConstructor.EntityDefinitions"
+      xmlns:tree="clr-namespace:Aga.Controls.Tree;assembly=Aga.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="302" d:DesignWidth="556"
+      >
+    <UserControl.Resources>
+        <local:BoolToVisibilityConverter x:Key="converter" />
+    </UserControl.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel  HorizontalAlignment="Stretch" Grid.Row="0">
+            <Label Content="Объекты:" />
+        </StackPanel>
+        <tree:TreeList Grid.Row="1" Name="_tree">
+            <tree:TreeList.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="1/n" Width="30" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsCollection, Mode=TwoWay}" Visibility="{Binding IsEDModel,Converter={StaticResource converter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300" Header="Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <tree:RowExpander/>
+                                        <TextBlock Text="{Binding Caption}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Тип" Width="80" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Путь" Width="200" DisplayMemberBinding="{Binding Path}"/>
+                        <GridViewColumn Header="Хранимка" Width="80" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Visibility="{Binding IsEDModel,Converter={StaticResource converter}}" Text="{Binding StoredProcedureName,Mode=TwoWay}"
+                                                 MinWidth="30px"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </tree:TreeList.View>
+
+        </tree:TreeList>
+        <StackPanel Margin="5" Orientation="Horizontal" Grid.Row="3">
+            <Button Content="+" Width="30" Name="AddEMapButton" Click="AddMapButton_Click"/>
+            <Button Content="-" Width="30" Margin="10,0,0,0" Name="remoooveEntityDef" Click="remoooveEntityDef_Click"/>
+            <Button Content="Експорт" Width="Auto" Margin="10,0,0,0" Name="SaveXML" Click="SaveXML_Click" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

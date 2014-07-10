@@ -1,0 +1,23 @@
+﻿<Window x:Class="ReportMappingConstructor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:model="clr-namespace:ReportMappingConstructor.Models"
+        xmlns:app ="clr-namespace:ReportMappingConstructor"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fds ="clr-namespace:ReportMappingConstructor.FiltersDefinitions"
+        xmlns:eds ="clr-namespace:ReportMappingConstructor.EntityDefinitions" 
+        Title="MainWindow" Height="350" Width="864.736">
+    <Grid>
+        <TabControl Name="MainTabControl" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Параметры" >
+                <ListView/>
+            </TabItem>
+            <TabItem Name="Data" Header="Описание данных" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="120">
+                <eds:EntityDefinitionsControl x:Name="EDsContol"/>
+            </TabItem> 
+            <TabItem Name="Filters" Header="Описание фильтров" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="Auto" >
+                <fds:FilterDefinitionsControl x:Name="FDsControl"/>
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+</Window>

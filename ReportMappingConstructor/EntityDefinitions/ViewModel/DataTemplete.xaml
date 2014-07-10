@@ -1,0 +1,9 @@
+﻿<ResourceDictionary x:Name="DataTmp" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <DataTemplate x:Key="Check">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding IsCollection, Mode=TwoWay}"/>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="ReportMappingConstructor.EntityEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models ="clr-namespace:ReportMappingConstructor.Business.Models"
+        Title="EntityEditWindow" Height="287.547" Width="422.264">
+    <Grid>
+        <ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:FilterDefinition}">
+                    <TextBlock Text="{Binding Type}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

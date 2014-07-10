@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Document>
+  <Parameters>
+    <Parameter name="OpportunityId"/>
+    <Parameter name="OpportunityFormatId"/>
+    <Parameter name="OrderDataColumn"/>
+    <Parameter name="myFilter" />
+  </Parameters>
+  <EntityDefinitions>
+    <ED name="Opportunity" path="Opportunity">
+      <ColumnDefinitions>
+        <CD name="OwnerName" path="Owner.Name"/>
+        <CD name="OwnerManagerName" path="Owner.Manager.Name"/>
+        <CD name="AccountManagerName" path="AccountManager.Name"/>
+        <CD name="FinanceDirectorName" path="FinanceDirector.Name"/>
+        <CD name="FinanceCoordinatorName" path="FinanceCoordinator.Name"/>
+        <CD name="TrafficManagerName" path="TrafficManager.Name"/>
+        <CD name="SalesManagerName" path="SalesManager.Name"/>
+        <CD name="CreatedOn" path="CreatedOn"/>
+        <CD name="PayerName" path="Payer.Name"/>
+        <CD name="PayerPrimaryContactName" path="Payer.PrimaryContact.Name"/>
+        <CD name="AdvertisingGroupName" path="AdvertisingGroup.Name"/>
+        <CD name="AdvertisingAgencyName" path="AdvertisingAgency.Name"/>
+        <CD name="SellerName" path="Seller.Name"/>
+        <CD name="SellerPrimaryContactPhone" path="Seller.PrimaryContact.Phone"/>
+        <CD name="SellerPrimaryContactEMail" path="Seller.PrimaryContact.Email"/>
+        <CD name="AccountName" path="Account.Name"/>
+        <CD name="AccountTypeId" path="Account.Type.Id"/>
+        <CD name="BrandName" path="Brand.Name"/>
+		<CD name="ECByGenresCategories" path="ECByGenresCategories"/>
+		<CD name="ECGeo" path="ECGeo"/>
+		<CD name="ECFrequency" path="ECFrequency"/>
+		<CD name="ECTime" path="ECTime"/>
+		<CD name="ECPositioning" path="ECPositioning"/>
+		<CD name="ECGenderAge" path="ECGenderAge"/>
+		<CD name="ECCostForPostpay" path="ECCostForPostpay"/>
+		<CD name="ECTotal" path="ECTotal"/>
+		<CD name="CDPriceBudgetRK" path="CDPriceBudgetRK"/>
+		<CD name="CDPlacementDuraction" path="CDPlacementDuraction"/>
+		<CD name="CDFormatFlex" path="CDFormatFlex"/>
+		<CD name="CDProductCategory" path="CDProductCategory"/>
+		<CD name="PlacementBudget" path="PlacementBudget"/>
+		<CD name="CDStockDiscount" path="CDStockDiscount"/>
+		<CD name="CDFinalCustomerDiscount" path="CDFinalCustomerDiscount"/>
+		<CD name="CDAgencySK" path="CDAgencySK"/>
+		<CD name="CDConsideredSK" path="CDConsideredSK"/>
+		<CD name="CDSellerKS" path="CDSellerKS"/>
+		<CD name="CDConsideredKS" path="CDConsideredKS"/>
+		<CD name="CDFinalDiscount" path="CDFinalDiscount"/>
+		<CD name="CDFinalAmount" path="CDFinalAmount"/>
+		<CD name="CampaignCategoryName" path="CampaignCategory.Name"/>
+		<CD name="PaymentTerms" path="PaymentTerms"/>
+		<CD name="VideoNetworkPackageName" path="VideoNetworkPackage.Name"/>
+		<CD name="PriceWithRateTotal" path="PriceWithRateTotal"/>
+		<CD name="CDStockDiscountUse" path="CDStockDiscountUse"/>
+        <CD name="TransactionInitDepartmentName" path="TransactionInitDepartment.Name"/>
+		<CD name="ShowTrackingSystemName" path="ShowTrackingSystem.Name"/>
+      </ColumnDefinitions>
+      <FilterDefinitions>
+        <FilterCollection logicalOperation="And">
+          <FD type="FromFD" leftVal="Id" comparisonType="Equals" rightVal="@OpportunityId"/>
+        </FilterCollection>
+      </FilterDefinitions>
+    </ED>
+    <ED name="Format">
+      <ColumnDefinitions>
+        <CD name="FormatName" path="Name"/>
+      </ColumnDefinitions>
+      <FilterDefinitions>
+        <FilterCollection logicalOperation="And">
+          <FD type="FromFD" leftVal="Id" comparisonType="Equals" rightVal="@OpportunityFormatId"/>
+        </FilterCollection>
+      </FilterDefinitions>
+    </ED>
+    <ED name="Order" type="collection">
+      <ColumnDefinitions>
+        <CD name="Description" path="OrderDescription"/>
+        <CD name="Timestudy" path="Timestudy"/>
+        <CD name="PlatformName" path="Platform.Name"/>
+        <CD name="FormatName" path="Format.Name"/>
+        <CD name="TargetingFrequencyName" path="TargetingFrequency.Name"/>
+        <CD name="SocialDemographyName" path="SocialDemography.Name"/>
+        <CD name="TargetingGEOName" path="TargetingGEO.Name"/>
+        <CD name="StartDate" path="StartDate"/>
+        <CD name="EndDate" path="EndDate"/>
+        <CD name="CountShowing" path="CountShowing"/>
+        <CD name="SeasonRate" path="SeasonRate.Name"/>
+        <CD name="PriceUnitCost" path="PriceUnitCost"/>
+        <CD name="TotalCostIncludingPriceFactor" path="TotalCostIncludingPriceFactor"/>
+      </ColumnDefinitions>
+      <FilterDefinitions>
+        <FilterCollection logicalOperation="And">
+          <FD type="FromFD" leftVal="Sale.Id" comparisonType="Equals" rightVal="@OpportunityId"/>
+        </FilterCollection>
+      </FilterDefinitions>
+    </ED>
+  </EntityDefinitions>
+  <MappingRows>
+    <MR cellPath="{Opportunity.OwnerName}" value ="Opportunity.OwnerName" />
+    <MR cellPath="{Opportunity.OwnerManagerName}" value ="Opportunity.OwnerManagerName" />
+    <MR cellPath="{Opportunity.CreatedOn}" formatString="{0:dd.MM.yyyy}" value ="Opportunity.CreatedOn"/>
+    <MR cellPath="{Opportunity.AccountManagerName}" value ="Opportunity.AccountManagerName" />
+    <MR cellPath="{Opportunity.FinanceDirectorName}" value ="Opportunity.FinanceDirectorName" />
+    <MR cellPath="{Opportunity.FinanceCoordinatorName}" value ="Opportunity.FinanceCoordinatorName" />
+    <MR cellPath="{Opportunity.TrafficManagerName}" value ="Opportunity.TrafficManagerName" />
+    <MR cellPath="{Opportunity.SalesManagerName}" value ="Opportunity.SalesManagerName" />
+    <MR cellPath="{Opportunity.PayerName}" value ="Opportunity.PayerName" />
+    <MR cellPath="{Opportunity.PayerPrimaryContactName}" value ="Opportunity.PayerPrimaryContactName" />
+    <MR cellPath="{Opportunity.AdvertisingGroupName}" value ="Opportunity.AdvertisingGroupName" />
+    <MR cellPath="{Opportunity.AdvertisingAgencyName}" value ="Opportunity.AdvertisingAgencyName" />
+    <MR cellPath="{Opportunity.SellerName}" value ="Opportunity.SellerName" />
+    <MR cellPath="{Opportunity.AccountName}" value ="Opportunity.AccountName" />
+    <MR cellPath="{Opportunity.BrandName}" value ="Opportunity.BrandName" />
+    <MR cellPath="{Opportunity.ProductCategoriesName}" value ="Format.FormatName" />
+	<MR cellPath="{Opportunity.ECByGenresCategories}" value ="Opportunity.ECByGenresCategories" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECGeo}" value ="Opportunity.ECGeo" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECFrequency}" value ="Opportunity.ECFrequency" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECTime}" value ="Opportunity.ECTime" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECPositioning}" value ="Opportunity.ECPositioning" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECGenderAge}" value ="Opportunity.ECGenderAge" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.ECCostForPostpay}" value ="Opportunity.ECCostForPostpay" formatString="{0}%" />
+	<MR cellPath="{Opportunity.ECTotal}" value ="Opportunity.ECTotal" formatString="{0:0.00}" dataType="Number"/>
+	<MR cellPath="{Opportunity.CDPriceBudgetRK}" value ="Opportunity.CDPriceBudgetRK" formatString="{0}%" />
+	<MR cellPath="{Opportunity.CDPlacementDuraction}" value ="Opportunity.CDPlacementDuraction" formatString="{0}%" />
+	<MR cellPath="{Opportunity.CDFormatFlex}" value ="Opportunity.CDFormatFlex" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDProductCategory}" value ="Opportunity.CDProductCategory" formatString="{0}%" />
+	<MR cellPath="{Opportunity.PlacementBudget}" value ="Opportunity.PlacementBudget" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDStockDiscount}" value ="Opportunity.CDStockDiscount" formatString="{0}%" />
+	<MR cellPath="{Opportunity.CDFinalCustomerDiscount}" value ="Opportunity.CDFinalCustomerDiscount" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDAgencySK}" value ="Opportunity.CDAgencySK" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDSellerKS}" value ="Opportunity.CDSellerKS" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDFinalDiscount}" value ="Opportunity.CDFinalDiscount" formatString="{0}%"/>
+	<MR cellPath="{Opportunity.CDFinalAmount}" value ="Opportunity.CDFinalAmount" formatString="{0:0.00}" dataType="Number"/>
+	<MR cellPath="{Opportunity.CampaignCategoryName}" value ="Opportunity.CampaignCategoryName" />
+	<MR cellPath="{Opportunity.PaymentTerms}" value ="Opportunity.PaymentTerms" />
+	<MR cellPath="{Opportunity.VideoNetworkPackageName}" value ="Opportunity.VideoNetworkPackageName" />
+	<MR cellPath="{Opportunity.PriceWithRateTotal}" value ="Opportunity.PriceWithRateTotal" formatString="{0:0.00}" dataType="Number" />
+	<MR cellPath="{Opportunity.CDStockDiscountUse}" value ="Opportunity.CDStockDiscountUse" />
+	<MR cellPath="{Opportunity.CampaignCategoryName}" value ="Opportunity.CampaignCategoryName" />
+	<MR cellPath="{Opportunity.ShowTrackingSystemName}" value ="Opportunity.ShowTrackingSystemName" />
+	<MR cellPath="{Opportunity.Contacts}" value ="Contacts" />
+    <MR cellPath="{Opportunity.TransactionInitDepartmentName}" value ="Opportunity.TransactionInitDepartmentName" />
+    <MR destination="Formula" cellPath="{AccountTypeIsAgency}" value ="AccountTypeIsAgency" formatString="IF({0},&quot;x&quot;,&quot; &quot;)"/>
+	<MR destination="Formula" cellPath="{AccountTypeIsNotAgency}" value ="AccountTypeIsNotAgency" formatString="IF({0},&quot;x&quot;,&quot; &quot;)"/>
+    <MR destination="Formula" cellPath="{SKIsConcidered}" formatString="IF({0},&quot;учтена&quot;,&quot;не учтена&quot;)" function="equals">
+      <Value value="Opportunity.CDConsideredSK"/>
+      <Value valueType="Static" value="True"/>
+    </MR>
+  </MappingRows>
+	<ExcellRepeatSections>
+    <RS entityColectionDefinition="Order" replaceCurrentRows="false">
+      <MR cellPath="{OrderDescription}"  value ="Order.Description" formatString="{0} (так как будет прописано в приложении )" sort="true"/>
+      <MR cellPath="{площадка}" value ="Order.PlatformName" />
+      <MR cellPath="{формат}" value ="Order.FormatName" />
+      <MR cellPath="{хронометраж}" value ="Order.Timestudy" formatString="{0} сек."/>
+      <MR cellPath="{таргетинг_по_частоте}" value ="Order.TargetingFrequencyName"/>
+      <MR cellPath="{таргетинг_по_контенту}" function="getTargeting">
+        <Value name="id" value="Order.Id"/>
+        <Value valueType="Static" name="column" value="@OrderDataColumn"/>
+      </MR>
+      <MR cellPath="{Соцдем}" value ="Order.SocialDemographyName"/>
+      <MR cellPath="{таргетинг_ГЕО}" value ="Order.TargetingGEOName"/>
+      <MR cellPath="{срок_размещения}" formatString="{0:dd.MM.yy} - {1:dd.MM.yy}">
+        <Value name="from" value="Order.StartDate"/>
+        <Value name="to" value="Order.EndDate"/>
+      </MR>
+      <MR cellPath="{кол-во_показов}" value ="Order.CountShowing" dataType="Number"/>
+      <MR cellPath="{сезонный_коэф-т}" value ="Order.SeasonRate" dataType="Number"/>
+      <MR cellPath="{стоимость_за_единицу}" value ="Order.PriceUnitCost" dataType="Number"/>
+      <MR cellPath="{итого_по_прайсу}" value ="Order.TotalCostIncludingPriceFactor" dataType="Number"/>
+      <Summary cellPath="{кп}" value ="Order.CountShowing" summaryFunction="summ" dataType="Number"/>
+      <Summary cellPath="{се}" value ="Order.PriceUnitCost" summaryFunction="summ" dataType="Number"/>
+    </RS>
+  </ExcellRepeatSections>
+</Document>

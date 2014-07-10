@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ReportMappingConstructor.FiltersDefinitions.FilterDefinitionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ReportMappingConstructor.EntityDefinitions"
+             xmlns:vm="clr-namespace:ReportMappingConstructor.FiltersDefinitions.ViewModel"
+             xmlns:tree="clr-namespace:Aga.Controls.Tree;assembly=Aga.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="686.321">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel  HorizontalAlignment="Stretch" Grid.Row="0">
+            <Label Content="Фильтры:" />
+        </StackPanel> 
+        <tree:TreeList Grid.Row="1" Name="_tree" SelectionChanged="_tree_SelectionChanged">
+            <tree:TreeList.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="200" Header="Name">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <tree:RowExpander/>
+                                        <TextBlock Text="{Binding Caption}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Тип" Width="120" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Значение слева" Width="150" DisplayMemberBinding="{Binding LeftValue}"/>
+                        <GridViewColumn Header="Оператор" Width="70"  DisplayMemberBinding="{Binding ComparisonType}"/>
+                        <GridViewColumn Header="Значение справа" Width="150" DisplayMemberBinding="{Binding RightValue}"/>
+                    </GridView.Columns>
+                </GridView>
+            </tree:TreeList.View>
+
+        </tree:TreeList>
+        <StackPanel Margin="5" Orientation="Horizontal" Grid.Row="3">
+            <Button Content="+" Width="30" Name="AddEMapButton" />
+            <Button Content="-" Width="30" Margin="10,0,0,0" Name="remoooveFD" Click="remoooveFD_Click" />
+        </StackPanel>
+
+        </Grid>
+</UserControl>
